@@ -54,10 +54,22 @@ startFEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
 
 board = Board(startFEN, gameDisplay, ImageLocation)
 
+#init the board
+board.board()
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             quit()
+        
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if pygame.mouse.get_pressed()[0]: # lmb
+                board.pickup()
 
-    board.draw()
+        elif event.type == pygame.MOUSEBUTTONUP:
+            board.drop()
+            board.board
+    
+    board.update()
+    pygame.display.flip()
